@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	mode: 'development',
@@ -29,8 +30,22 @@ module.exports = {
 			},
 		],
 	},
-	plugins: [],
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: path.resolve(__dirname, 'public/index.html'), // 읽어올 템플릿 경로 지정
+			publicPath: '',
+		}),
+	],
 	optimization: {},
+	devServer: {
+		static: {
+			directory: path.join(__dirname, 'public'),
+		},
+		compress: true,
+		open: true,
+		hot: true,
+		port: 8000,
+	},
 	resolve: {
 		modules: ['node_modules'],
 		extensions: ['.js', 'ts', '.json', '.jsx', '.tsx', '.css'],
