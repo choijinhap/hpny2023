@@ -48,6 +48,6 @@ module.exports = {
 	},
 	resolve: {
 		modules: ['node_modules'],
-		extensions: ['.js', 'ts', '.json', '.jsx', '.tsx', '.css'],
+		extensions: ['.js', '.ts', '.json', '.jsx', '.tsx', '.css'],
 	},
 };
