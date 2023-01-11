@@ -52,5 +52,8 @@ module.exports = {
 	resolve: {
 		modules: ['node_modules'],
 		extensions: ['.js', '.ts', '.json', '.jsx', '.tsx', '.css'],
+		alias: {
+			src: path.resolve(__dirname, 'src'),
+		},
 	},
 };
