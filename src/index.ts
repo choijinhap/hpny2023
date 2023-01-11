@@ -1,4 +1,5 @@
+import App from './App';
 import './index.css';
 
 const app = document.querySelector('#app');
-if (app) app.innerHTML = '<h1>Welcome!! Hello! Worlds!!!</h1>';
+if (app) new App({ target: app });
