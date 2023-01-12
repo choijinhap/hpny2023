@@ -3,19 +3,23 @@ interface Constructor {
 }
 class Component<T> {
 	parentEl: Element;
+	wrapper: Element;
 	state: T;
 	constructor({ parentEl }: Constructor) {
 		this.parentEl = parentEl;
+		this.wrapper = document.createElement('div');
 		this.setup();
-		this.setEvent();
 		this.render();
+		this.setEvent();
 	}
 	setup() {}
 	template() {
 		return ``;
 	}
 	render() {
-		this.parentEl.innerHTML = this.template();
+		this.wrapper.innerHTML = this.template();
+		this.parentEl.innerHTML = '';
+		this.parentEl.appendChild(this.wrapper);
 	}
 	setEvent() {}
 	setState(newState: T) {
@@ -23,9 +27,9 @@ class Component<T> {
 		this.render();
 	}
 	addEvent(eventType: string, selector: string, callback: (event: Event) => void) {
-		const children = [...this.parentEl.querySelectorAll(selector)];
+		const children = [...this.wrapper.querySelectorAll(selector)];
 		const isTarget = (target: Element) => children.includes(target) || target.closest(selector);
-		this.parentEl.addEventListener(eventType, (event) => {
+		this.wrapper.addEventListener(eventType, (event) => {
 			if (!isTarget(event.target as Element)) return false;
 			callback(event);
 		});
