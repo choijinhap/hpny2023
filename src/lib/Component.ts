@@ -20,6 +20,7 @@ class Component<T> {
 		this.wrapper.innerHTML = this.template();
 		this.parentEl.innerHTML = '';
 		this.parentEl.appendChild(this.wrapper);
+		this.onMounted();
 	}
 	setEvent() {}
 	setState(newState: T) {
@@ -34,5 +35,6 @@ class Component<T> {
 			callback(event);
 		});
 	}
+	onMounted() {}
 }
 export default Component;
