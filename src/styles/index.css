@@ -1,0 +1,13 @@
+@import 'src/styles/reset.css';
+
+* {
+	box-sizing: border-box;
+}
+body {
+	max-width: 640px;
+	margin: auto;
+}
+
+#app {
+	padding: 10px;
+}

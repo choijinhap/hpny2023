@@ -1,11 +1,11 @@
-import Page1 from './pages/Page1';
+import Main from './pages/Main';
 
 interface App {
 	target: Element;
 }
 class App {
 	constructor({ target }: App) {
-		new Page1({ parentEl: target });
+		new Main({ parentEl: target });
 	}
 }
 
