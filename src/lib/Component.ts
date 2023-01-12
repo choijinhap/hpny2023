@@ -1,12 +1,11 @@
-interface Constructor {
-	parentEl: Element;
-}
-class Component<T> {
+class Component<T, K> {
 	parentEl: Element;
 	wrapper: Element;
 	state: T;
-	constructor({ parentEl }: Constructor) {
+	props: K;
+	constructor({ parentEl, props }: { parentEl: Element; props: K }) {
 		this.parentEl = parentEl;
+		this.props = props;
 		this.wrapper = document.createElement('div');
 		this.setup();
 		this.render();
@@ -21,6 +20,7 @@ class Component<T> {
 		this.wrapper.innerHTML = this.template();
 		this.parentEl.innerHTML = '';
 		this.parentEl.appendChild(this.wrapper);
+		this.update();
 	}
 	setEvent() {}
 	setState(newState: T) {
@@ -36,5 +36,6 @@ class Component<T> {
 		});
 	}
 	onMounted() {}
+	update() {}
 }
 export default Component;

@@ -30,7 +30,7 @@ class Router {
 	route() {
 		const matchedRoute = this.findMatchedRoute();
 		if (matchedRoute) {
-			new matchedRoute.element({ parentEl: this.parentEl });
+			new matchedRoute.element({ parentEl: this.parentEl, props: null });
 		}
 	}
 	init() {

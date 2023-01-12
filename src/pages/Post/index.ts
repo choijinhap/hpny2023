@@ -1,7 +1,7 @@
 import Component from 'src/lib/Component';
 import './post.scss';
 
-class Post extends Component<null> {
+class Post extends Component<null, null> {
 	template() {
 		return `
       <div class="Post">
