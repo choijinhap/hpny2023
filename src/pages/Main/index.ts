@@ -1,4 +1,5 @@
 import Component from 'src/lib/Component';
+import { navigate } from 'src/lib/Router';
 import './main.scss';
 
 class Main extends Component<null> {
@@ -30,6 +31,11 @@ class Main extends Component<null> {
         </div>
       </div>
     `;
+	}
+	setEvent() {
+		this.addEvent('click', 'div', () => {
+			navigate('/post');
+		});
 	}
 }
 export default Main;

@@ -1,11 +1,11 @@
-import Main from './pages/Main';
+import Router from './lib/Router';
 
 interface App {
 	target: Element;
 }
 class App {
 	constructor({ target }: App) {
-		new Main({ parentEl: target });
+		new Router(target);
 	}
 }
 
