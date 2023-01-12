@@ -11,6 +11,7 @@ class Component<T> {
 		this.setup();
 		this.render();
 		this.setEvent();
+		this.onMounted();
 	}
 	setup() {}
 	template() {
@@ -20,7 +21,6 @@ class Component<T> {
 		this.wrapper.innerHTML = this.template();
 		this.parentEl.innerHTML = '';
 		this.parentEl.appendChild(this.wrapper);
-		this.onMounted();
 	}
 	setEvent() {}
 	setState(newState: T) {
