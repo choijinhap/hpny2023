@@ -11,3 +11,11 @@ body {
 #app {
 	padding: 10px;
 }
+
+strong {
+	font-size: 20px;
+	font-weight: bold;
+}
+small {
+	font-size: 12px;
+}
