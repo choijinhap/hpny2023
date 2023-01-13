@@ -53,13 +53,28 @@ class Post extends Component<State, null> {
 
 	update(): void {
 		this.checkImage();
+		this.checkPost();
 	}
 
 	checkImage() {
+		const imageBtn = document.querySelector('.create-image-btn') as HTMLButtonElement;
 		if (this.state.image) {
-			const imageBtn = document.querySelector('.create-image-btn') as HTMLButtonElement;
 			imageBtn.disabled = true;
 			imageBtn.classList.remove('active');
+		} else {
+			imageBtn.disabled = false;
+			imageBtn.classList.add('active');
+		}
+	}
+
+	checkPost() {
+		const postBtn = document.querySelector('.post-btn') as HTMLButtonElement;
+		if (this.state.image && this.state.content && this.state.title) {
+			postBtn.disabled = false;
+			postBtn.classList.add('active');
+		} else {
+			postBtn.disabled = true;
+			postBtn.classList.remove('active');
 		}
 	}
 }
