@@ -1,9 +1,11 @@
+import Detail from 'src/pages/Detail';
 import Main from 'src/pages/Main';
 import Post from 'src/pages/Post';
 
 const routes = [
 	{ path: /^\/$/, element: Main },
 	{ path: /^\/post\/?$/, element: Post },
+	{ path: /^\/post\/[\w]/, element: Detail },
 ];
 
 export const navigate = (to: string, isReplace = false) => {
@@ -28,6 +30,7 @@ class Router {
 		return routes.find((route) => route.path.test(location.pathname));
 	}
 	route() {
+		console.log('asd');
 		const matchedRoute = this.findMatchedRoute();
 		if (matchedRoute) {
 			new matchedRoute.element({ parentEl: this.parentEl, props: null });
