@@ -30,7 +30,6 @@ class Router {
 		return routes.find((route) => route.path.test(location.pathname));
 	}
 	route() {
-		console.log('asd');
 		const matchedRoute = this.findMatchedRoute();
 		if (matchedRoute) {
 			new matchedRoute.element({ parentEl: this.parentEl, props: null });

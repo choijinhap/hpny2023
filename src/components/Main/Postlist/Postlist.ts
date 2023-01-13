@@ -28,14 +28,6 @@ class Postlist extends Component<State, null> {
 			`;
 	}
 
-	setEvent() {
-		this.addEvent('click', '.post-item', (e) => {
-			const target = e.target as HTMLElement;
-			const postItem = target.closest('.post-item') as HTMLElement;
-			const postId = postItem.dataset.id;
-			navigate(`/post/${postId}`);
-		});
-	}
 	onMounted() {
 		const fetchData = async () => {
 			const res = await getAllPosts();
