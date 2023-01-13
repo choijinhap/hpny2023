@@ -1,5 +1,6 @@
 import Postlist from 'src/components/Main/Postlist/Postlist';
 import Component from 'src/lib/Component';
+import { navigate } from 'src/lib/Router';
 import './main.scss';
 
 class Main extends Component<null, null> {
@@ -13,6 +14,11 @@ class Main extends Component<null, null> {
         </div>
       </div>
     `;
+	}
+	setEvent(): void {
+		this.addEvent('click', '.create-post-btn', () => {
+			navigate('/post');
+		});
 	}
 	update(): void {
 		const postListWrapper = this.wrapper.querySelector('[data-component="post-list"') as Element;
