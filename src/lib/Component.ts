@@ -23,7 +23,7 @@ class Component<T, K> {
 		this.update();
 	}
 	setEvent() {}
-	setState(newState: T) {
+	setState(newState: Partial<T>) {
 		this.state = { ...this.state, ...newState };
 		this.render();
 	}
