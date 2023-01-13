@@ -1,5 +1,7 @@
+import { postPost } from 'src/API/post';
 import { getPhoto } from 'src/API/unsplash';
 import Component from 'src/lib/Component';
+import { navigate } from 'src/lib/Router';
 import './post.scss';
 type State = {
 	image: string;
@@ -22,7 +24,7 @@ class Post extends Component<State, null> {
         </button>
         <input class="title" type="text" value="${this.state.title}"/>
         <input class="content" type="text" value="${this.state.content}"/>
-        <button class="create-post-btn">
+        <button class="post-btn">
           글 작성하기
         </button>
       </div>
@@ -41,6 +43,11 @@ class Post extends Component<State, null> {
 			const res = await getPhoto();
 			this.setState({ image: res.data.urls.regular });
 			console.log(res);
+		});
+		this.addEvent('click', '.post-btn', async () => {
+			const { title, content, image } = this.state;
+			const res = await postPost({ title, content, image });
+			if (res.data.code === 201) navigate('/');
 		});
 	}
 
