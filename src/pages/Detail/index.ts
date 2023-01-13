@@ -1,5 +1,6 @@
 import { Post } from 'src/@types/post';
 import { getPostDetail } from 'src/API/post';
+import PostDetail from 'src/components/Detail/PostDetail';
 import Component from 'src/lib/Component';
 type State = {
 	post: Post;
@@ -18,21 +19,9 @@ class Detail extends Component<State, null> {
 		};
 	}
 	template(): string {
-		const { content, updatedAt, image, title } = this.state.post;
 		return `
         <div class="Detail">
-          <div class="post-detail">
-            <div class="img-wrapper">
-              <img src=${image}></img>
-            </div>
-            <strong>${title}</strong>
-            <small>${updatedAt}</small>
-            <p>${content}</p>
-            <div class="post-btn-wrapper">
-              <button class="post-modify=btn">수정</button>
-              <button class="post-delete-btn">삭제</button>
-            </div>
-          </div>
+          <div data-component="post-detail"></div>
           <hr/>
           <div class="post-comment-list">
             <div class="post-comment">
@@ -51,6 +40,12 @@ class Detail extends Component<State, null> {
 			this.setState({ post: res.data.data.post });
 		};
 		fetchData();
+	}
+	update(): void {
+		const postDetailWrapper = this.wrapper.querySelector(
+			'[data-component="post-detail"'
+		) as Element;
+		new PostDetail({ parentEl: postDetailWrapper, props: { post: this.state.post } });
 	}
 }
 export default Detail;
