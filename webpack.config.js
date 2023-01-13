@@ -1,7 +1,9 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const dotenv = require('dotenv');
 
+dotenv.config();
 module.exports = {
 	mode: 'development',
 	target: 'web',
@@ -36,6 +38,7 @@ module.exports = {
 			template: path.resolve(__dirname, 'public/index.html'), // 읽어올 템플릿 경로 지정
 			publicPath: '',
 		}),
+		new webpack.DefinePlugin({ 'process.env': JSON.stringify(process.env) }),
 	],
 	optimization: {},
 	devServer: {
