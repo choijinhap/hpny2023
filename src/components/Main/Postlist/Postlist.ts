@@ -2,7 +2,7 @@ import Component from 'src/lib/Component';
 import { getAllPosts } from 'src/API/post';
 import { navigate } from 'src/lib/Router';
 import Postitem from '../Postitem/Postitem';
-import { Post } from 'src/@types/Post';
+import { Post } from 'src/@types/post';
 import './postlist.scss';
 
 type State = {

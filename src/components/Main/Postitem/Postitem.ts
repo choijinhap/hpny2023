@@ -1,4 +1,4 @@
-import { Post } from 'src/@types/Post';
+import { Post } from 'src/@types/post';
 import Component from 'src/lib/Component';
 import { navigate } from 'src/lib/Router';
 import './postitem.scss';
