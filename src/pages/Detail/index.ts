@@ -1,5 +1,6 @@
 import { Post } from 'src/@types/post';
 import { getPostDetail } from 'src/API/post';
+import Header from 'src/components/Common/Header';
 import PostDetail from 'src/components/Detail/PostDetail';
 import Component from 'src/lib/Component';
 type State = {
@@ -20,16 +21,17 @@ class Detail extends Component<State, null> {
 	}
 	template(): string {
 		return `
-        <div class="Detail">
-          <div data-component="post-detail"></div>
-          <hr/>
-          <div class="post-comment-list">
-            <div class="post-comment">
-              <p>댓글입니다</p>
-              <button class="post-comment-delete-btn">삭제</button>
-            </div>
-          </div>
-        </div>
+			<div data-component="header"></div>
+			<div class="Detail">
+				<div data-component="post-detail"></div>
+				<hr/>
+				<div class="post-comment-list">
+					<div class="post-comment">
+						<p>댓글입니다</p>
+						<button class="post-comment-delete-btn">삭제</button>
+					</div>
+				</div>
+			</div>
     `;
 	}
 	onMounted(): void {
@@ -46,6 +48,8 @@ class Detail extends Component<State, null> {
 			'[data-component="post-detail"'
 		) as Element;
 		new PostDetail({ parentEl: postDetailWrapper, props: { post: this.state.post } });
+		const header = this.wrapper.querySelector('[data-component="header"') as Element;
+		new Header({ parentEl: header, props: { hasBackBtn: true, title: 'HPNY 2023' } });
 	}
 }
 export default Detail;

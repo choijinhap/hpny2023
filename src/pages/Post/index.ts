@@ -1,5 +1,6 @@
 import { postPost } from 'src/API/post';
 import { getPhoto } from 'src/API/unsplash';
+import Header from 'src/components/Common/Header';
 import Component from 'src/lib/Component';
 import { navigate } from 'src/lib/Router';
 import './post.scss';
@@ -18,6 +19,7 @@ class Post extends Component<State, null> {
 	}
 	template() {
 		return `
+			<div data-component="header"></div>
       <div class="Post">
         <button class="create-image-btn active">
           랜덤 이미지 추가하기
@@ -54,6 +56,8 @@ class Post extends Component<State, null> {
 	update(): void {
 		this.checkImage();
 		this.checkPost();
+		const header = this.wrapper.querySelector('[data-component="header"') as Element;
+		new Header({ parentEl: header, props: { hasBackBtn: true, title: 'HPNY 2023' } });
 	}
 
 	checkImage() {

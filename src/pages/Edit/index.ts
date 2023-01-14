@@ -1,5 +1,6 @@
 import { Post } from 'src/@types/post';
 import { getPostDetail, patchPost } from 'src/API/post';
+import Header from 'src/components/Common/Header';
 import Component from 'src/lib/Component';
 import { navigate } from 'src/lib/Router';
 
@@ -18,6 +19,7 @@ class Edit extends Component<State, null> {
 	template(): string {
 		const { image, title, content } = this.state;
 		return `
+      <div data-component="header"></div>
       <div class="Edit">
         <img src="${image}"/>
         <input class="title" type="text" value="${title}"/>
@@ -41,6 +43,11 @@ class Edit extends Component<State, null> {
 		this.addEvent('change', '.title', this.onTitleChange.bind(this));
 		this.addEvent('change', '.content', this.onContentChange.bind(this));
 		this.addEvent('click', '.edit-btn', this.onEditPost.bind(this));
+	}
+
+	update(): void {
+		const header = this.wrapper.querySelector('[data-component="header"') as Element;
+		new Header({ parentEl: header, props: { hasBackBtn: true, title: 'HPNY 2023' } });
 	}
 
 	onTitleChange(e: Event) {
