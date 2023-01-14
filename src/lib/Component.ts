@@ -22,6 +22,9 @@ class Component<T, K> {
 		this.parentEl.appendChild(this.wrapper);
 		this.update();
 	}
+	unMount() {
+		this.parentEl.remove();
+	}
 	setEvent() {}
 	setState(newState: Partial<T>) {
 		this.state = { ...this.state, ...newState };
