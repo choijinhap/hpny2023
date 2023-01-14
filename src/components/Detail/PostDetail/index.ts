@@ -29,6 +29,11 @@ class PostDetail extends Component<null, Props> {
 	}
 	setEvent(): void {
 		this.addEvent('click', '.post-delete-btn', this.deletePostHandler.bind(this));
+		this.addEvent('click', '.post-modify-btn', this.modifyPostHandler.bind(this));
+	}
+
+	modifyPostHandler() {
+		navigate(`/edit/${this.props.post.postId}`);
 	}
 
 	async deletePostHandler() {

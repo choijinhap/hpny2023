@@ -1,4 +1,5 @@
 import Detail from 'src/pages/Detail';
+import Edit from 'src/pages/Edit';
 import Main from 'src/pages/Main';
 import Post from 'src/pages/Post';
 
@@ -6,6 +7,7 @@ const routes = [
 	{ path: /^\/$/, element: Main },
 	{ path: /^\/post\/?$/, element: Post },
 	{ path: /^\/post\/[\w]/, element: Detail },
+	{ path: /^\/edit\/[\w]/, element: Edit },
 ];
 
 export const navigate = (to: string, isReplace = false) => {
