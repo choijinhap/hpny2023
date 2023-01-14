@@ -8,3 +8,5 @@ export const deletePost = (postId: string) => server.delete(`/post/${postId}`);
 export const patchPost = (postId: string, { title, content }: Partial<Post>) =>
 	server.patch(`/post/${postId}`, { title, content });
 export const deleteComment = (commentId: string) => server.delete(`/comment/${commentId}`);
+export const postComment = (postId: string, content: string) =>
+	server.post(`/comment/${postId}`, { content });

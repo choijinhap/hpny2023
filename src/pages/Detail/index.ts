@@ -1,6 +1,7 @@
 import { Comment, Post } from 'src/@types/post';
 import { getPostDetail } from 'src/API/post';
 import Header from 'src/components/Common/Header';
+import CommentForm from 'src/components/Detail/CommentForm';
 import CommentList from 'src/components/Detail/CommentList';
 import PostDetail from 'src/components/Detail/PostDetail';
 import Component from 'src/lib/Component';
@@ -29,6 +30,7 @@ class Detail extends Component<State, null> {
 				<div data-component="post-detail"></div>
 				<hr/>
 				<div data-component="post-comment-list"></div>
+				<div data-component="comment-form"></div>
 			</div>
     `;
 	}
@@ -51,6 +53,10 @@ class Detail extends Component<State, null> {
 			'[data-component="post-comment-list"'
 		) as Element;
 		new CommentList({ parentEl: commentListComponent, props: { comments: this.state.comments } });
+		const commentFormComponent = this.wrapper.querySelector(
+			'[data-component="comment-form"'
+		) as Element;
+		new CommentForm({ parentEl: commentFormComponent, props: { postId: this.state.post.postId } });
 	}
 }
 export default Detail;
