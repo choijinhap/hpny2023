@@ -6,3 +6,9 @@ export type Post = {
 	title: string;
 	updatedAt: string;
 };
+
+export type Comment = {
+	commentId: string;
+	postId: string;
+	content: string;
+};
