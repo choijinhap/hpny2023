@@ -10,6 +10,7 @@ body {
 
 #app {
 	padding: 10px;
+	padding-top: 70px;
 }
 
 strong {
@@ -18,4 +19,7 @@ strong {
 }
 small {
 	font-size: 12px;
+}
+a {
+	cursor: pointer;
 }

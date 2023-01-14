@@ -1,0 +1,23 @@
+.Header {
+	display: flex;
+	position: fixed;
+	width: 100%;
+	max-width: 640px;
+	left: 50%;
+	top: 0;
+	transform: translateX(-50%);
+	justify-content: space-between;
+	align-items: center;
+	height: 70px;
+	padding: 0 16px;
+	background-color: white;
+
+	#back-icon {
+		width: 36px;
+		height: 36px;
+	}
+
+	a {
+		font-size: 36px;
+	}
+}
