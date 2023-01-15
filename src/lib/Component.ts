@@ -7,7 +7,6 @@ class Component<T, K> {
 		this.props = props;
 		this.setup();
 		this.render();
-		this.setEvent();
 		this.onMounted();
 	}
 	setup() {}
@@ -16,6 +15,7 @@ class Component<T, K> {
 	}
 	render() {
 		this.parentEl.innerHTML = this.template();
+		this.setEvent();
 		this.update();
 	}
 	unMount() {
