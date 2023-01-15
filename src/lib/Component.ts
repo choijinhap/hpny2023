@@ -37,5 +37,10 @@ class Component<T, K> {
 	}
 	onMounted() {}
 	update() {}
+	autoFocus(selector: string, length: number) {
+		const el = this.parentEl.querySelector(selector) as HTMLInputElement;
+		el.focus();
+		el.setSelectionRange(length, length);
+	}
 }
 export default Component;
