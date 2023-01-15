@@ -24,13 +24,14 @@ class CommentForm extends Component<State, Props> {
     `;
 	}
 	setEvent(): void {
-		this.addEvent('change', '.content', this.onContentChange.bind(this));
+		this.addEvent('input', '.content', this.onContentChange.bind(this));
 		this.addEvent('submit', '.Comment-form', this.onSubmitHandler.bind(this));
 	}
 
 	onContentChange(e: Event) {
 		const target = e.target as HTMLInputElement;
 		this.setState({ content: target.value });
+		this.autoFocus('.content', this.state.content.length);
 	}
 
 	async onSubmitHandler(e: Event) {

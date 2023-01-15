@@ -45,8 +45,8 @@ class Edit extends Component<State, null> {
 	}
 
 	setEvent(): void {
-		this.addEvent('change', '.title', this.onTitleChange.bind(this));
-		this.addEvent('change', '.content', this.onContentChange.bind(this));
+		this.addEvent('input', '.title', this.onTitleChange.bind(this));
+		this.addEvent('input', '.content', this.onContentChange.bind(this));
 		this.addEvent('click', '.edit-btn', this.onEditPost.bind(this));
 	}
 
@@ -58,10 +58,12 @@ class Edit extends Component<State, null> {
 	onTitleChange(e: Event) {
 		const target = e.target as HTMLInputElement;
 		this.setState({ title: target.value });
+		this.autoFocus('.title', this.state.title.length);
 	}
 	onContentChange(e: Event) {
 		const target = e.target as HTMLInputElement;
 		this.setState({ content: target.value });
+		this.autoFocus('.content', this.state.content.length);
 	}
 	async onEditPost() {
 		const { title, content } = this.state;

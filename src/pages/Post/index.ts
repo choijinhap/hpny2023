@@ -35,13 +35,15 @@ class Post extends Component<State, null> {
     `;
 	}
 	setEvent(): void {
-		this.addEvent('change', '.title', (e) => {
+		this.addEvent('input', '.title', (e) => {
 			const target = e.target as HTMLInputElement;
 			this.setState({ title: target.value });
+			this.autoFocus('.title', this.state.title.length);
 		});
-		this.addEvent('change', '.content', (e) => {
+		this.addEvent('input', '.content', (e) => {
 			const target = e.target as HTMLInputElement;
 			this.setState({ content: target.value });
+			this.autoFocus('.content', this.state.content.length);
 		});
 		this.addEvent('click', '.create-image-btn', async () => {
 			const res = await getPhoto();
