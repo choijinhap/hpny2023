@@ -22,7 +22,7 @@ class CommentList extends Component<null, Props> {
     `;
 	}
 	update(): void {
-		const commentWrappers = this.wrapper.querySelectorAll('[data-component="comment"');
+		const commentWrappers = this.parentEl.querySelectorAll('[data-component="comment"');
 		commentWrappers.forEach((commentWrapper) => {
 			const commentWrapperEl = commentWrapper as HTMLElement;
 			new Comment({

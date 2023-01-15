@@ -19,6 +19,7 @@ class Post extends Component<State, null> {
 	}
 	template() {
 		return `
+		<div>
 			<div data-component="header"></div>
       <div class="Post">
         <button class="create-image-btn active">
@@ -30,6 +31,7 @@ class Post extends Component<State, null> {
           글 작성하기
         </button>
       </div>
+		</div>
     `;
 	}
 	setEvent(): void {
@@ -56,7 +58,7 @@ class Post extends Component<State, null> {
 	update(): void {
 		this.checkImage();
 		this.checkPost();
-		const header = this.wrapper.querySelector('[data-component="header"') as Element;
+		const header = this.parentEl.querySelector('[data-component="header"') as Element;
 		new Header({ parentEl: header, props: { hasBackBtn: true, title: 'HPNY 2023' } });
 	}
 

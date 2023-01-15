@@ -27,6 +27,7 @@ class Detail extends Component<State, null> {
 	}
 	template(): string {
 		return `
+		<div>
 			<div data-component="header"></div>
 			<div class="Detail">
 				<div data-component="post-detail"></div>
@@ -34,6 +35,7 @@ class Detail extends Component<State, null> {
 				<div data-component="post-comment-list"></div>
 				<div data-component="comment-form"></div>
 			</div>
+		</div>
     `;
 	}
 	onMounted(): void {
@@ -45,17 +47,17 @@ class Detail extends Component<State, null> {
 		fetchData();
 	}
 	update(): void {
-		const postDetailWrapper = this.wrapper.querySelector(
+		const postDetailWrapper = this.parentEl.querySelector(
 			'[data-component="post-detail"'
 		) as Element;
 		new PostDetail({ parentEl: postDetailWrapper, props: { post: this.state.post } });
-		const header = this.wrapper.querySelector('[data-component="header"') as Element;
+		const header = this.parentEl.querySelector('[data-component="header"') as Element;
 		new Header({ parentEl: header, props: { hasBackBtn: true, title: 'HPNY 2023' } });
-		const commentListComponent = this.wrapper.querySelector(
+		const commentListComponent = this.parentEl.querySelector(
 			'[data-component="post-comment-list"'
 		) as Element;
 		new CommentList({ parentEl: commentListComponent, props: { comments: this.state.comments } });
-		const commentFormComponent = this.wrapper.querySelector(
+		const commentFormComponent = this.parentEl.querySelector(
 			'[data-component="comment-form"'
 		) as Element;
 		new CommentForm({ parentEl: commentFormComponent, props: { postId: this.state.post.postId } });

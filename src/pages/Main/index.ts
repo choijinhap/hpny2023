@@ -7,6 +7,7 @@ import './main.scss';
 class Main extends Component<null, null> {
 	template() {
 		return `
+		<div>
 			<div data-component="header"></div>
       <div class="Main">
 				<div class="create-post-btn-wrap">
@@ -17,6 +18,7 @@ class Main extends Component<null, null> {
         <div data-component="post-list">
         </div>
       </div>
+		</div>
     `;
 	}
 	setEvent(): void {
@@ -25,9 +27,9 @@ class Main extends Component<null, null> {
 		});
 	}
 	update(): void {
-		const postListWrapper = this.wrapper.querySelector('[data-component="post-list"') as Element;
+		const postListWrapper = this.parentEl.querySelector('[data-component="post-list"') as Element;
 		new Postlist({ parentEl: postListWrapper, props: null });
-		const header = this.wrapper.querySelector('[data-component="header"') as Element;
+		const header = this.parentEl.querySelector('[data-component="header"') as Element;
 		new Header({ parentEl: header, props: { hasBackBtn: false, title: 'HPNY 2023' } });
 	}
 }

@@ -20,6 +20,7 @@ class Edit extends Component<State, null> {
 	template(): string {
 		const { image, title, content } = this.state;
 		return `
+		<div>
       <div data-component="header"></div>
       <div class="Edit">
 				<div class="img-wrapper">
@@ -31,6 +32,7 @@ class Edit extends Component<State, null> {
 					글 수정하기
 				</button>	
       </div>
+		</div>
     `;
 	}
 	onMounted(): void {
@@ -49,7 +51,7 @@ class Edit extends Component<State, null> {
 	}
 
 	update(): void {
-		const header = this.wrapper.querySelector('[data-component="header"') as Element;
+		const header = this.parentEl.querySelector('[data-component="header"') as Element;
 		new Header({ parentEl: header, props: { hasBackBtn: true, title: 'HPNY 2023' } });
 	}
 

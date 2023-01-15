@@ -36,7 +36,7 @@ class Postlist extends Component<State, null> {
 		fetchData();
 	}
 	update() {
-		const postItemWrappers = this.wrapper.querySelectorAll('[data-component="post-item"');
+		const postItemWrappers = this.parentEl.querySelectorAll('[data-component="post-item"');
 		postItemWrappers.forEach((postItemWrapper) => {
 			const postItemWrapperEl = postItemWrapper as HTMLElement;
 			new Postitem({
