@@ -20,6 +20,25 @@ strong {
 small {
 	font-size: 12px;
 }
-a {
+a,
+button {
 	cursor: pointer;
+}
+button:disabled {
+	cursor: default;
+}
+input {
+	border: 1px solid black;
+	padding: 16px;
+	font-size: 20px;
+	border-radius: 20px;
+}
+
+textarea {
+	border: 1px solid black;
+	padding: 16px;
+	font-size: 20px;
+	border-radius: 20px;
+	height: 200px;
+	resize: none;
 }

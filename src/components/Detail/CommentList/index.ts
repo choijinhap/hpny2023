@@ -1,6 +1,7 @@
 import Component from 'src/lib/Component';
 import Comment from '../Comment';
 import { Comment as CommentType } from 'src/@types/post';
+import './commentlist.scss';
 
 type Props = {
 	comments: Array<CommentType>;

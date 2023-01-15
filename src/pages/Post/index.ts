@@ -25,7 +25,7 @@ class Post extends Component<State, null> {
           랜덤 이미지 추가하기
         </button>
         <input class="title" type="text" value="${this.state.title}"/>
-        <input class="content" type="text" value="${this.state.content}"/>
+        <textarea class="content" type="text" maxlength="500">${this.state.content}</textarea>
         <button class="post-btn">
           글 작성하기
         </button>

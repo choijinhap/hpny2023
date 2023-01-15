@@ -3,6 +3,7 @@ import { getPostDetail, patchPost } from 'src/API/post';
 import Header from 'src/components/Common/Header';
 import Component from 'src/lib/Component';
 import { navigate } from 'src/lib/Router';
+import './edit.scss';
 
 type State = Post;
 class Edit extends Component<State, null> {
@@ -21,12 +22,14 @@ class Edit extends Component<State, null> {
 		return `
       <div data-component="header"></div>
       <div class="Edit">
-        <img src="${image}"/>
+				<div class="img-wrapper">
+					<img src="${image}"/>
+				</div>
         <input class="title" type="text" value="${title}"/>
-        <input class="content" type="text" value="${content}"/>
-        <button class="edit-btn">
-          글 수정하기
-        </button>
+        <textarea class="content" type="text"/>${content}</textarea>
+				<button class="edit-btn">
+					글 수정하기
+				</button>	
       </div>
     `;
 	}

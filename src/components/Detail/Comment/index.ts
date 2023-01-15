@@ -1,7 +1,8 @@
-import { navigate } from 'src/lib/Router';
 import { Comment as CommentType } from 'src/@types/post';
 import { deleteComment } from 'src/API/post';
 import Component from 'src/lib/Component';
+import './comment.scss';
+
 type Props = {
 	comment: CommentType;
 };

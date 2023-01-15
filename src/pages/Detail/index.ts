@@ -5,6 +5,8 @@ import CommentForm from 'src/components/Detail/CommentForm';
 import CommentList from 'src/components/Detail/CommentList';
 import PostDetail from 'src/components/Detail/PostDetail';
 import Component from 'src/lib/Component';
+import './detail.scss';
+
 type State = {
 	post: Post;
 	comments: Array<Comment>;

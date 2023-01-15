@@ -1,3 +1,5 @@
+@import 'src/styles/variables.scss';
+
 .Post {
 	display: flex;
 	flex-direction: column;
@@ -11,12 +13,7 @@
 		font-size: 24px;
 		color: white;
 		&.active {
-			background-color: blue;
+			background-color: $base-color;
 		}
-	}
-	input {
-		padding: 16px;
-		font-size: 20px;
-		border-radius: 20px;
 	}
 }

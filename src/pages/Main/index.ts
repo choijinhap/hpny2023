@@ -9,9 +9,11 @@ class Main extends Component<null, null> {
 		return `
 			<div data-component="header"></div>
       <div class="Main">
-        <button class="create-post-btn">
-          새 글 작성하기
-        </button>
+				<div class="create-post-btn-wrap">
+					<button class="create-post-btn">
+						새 글 작성하기
+					</button>
+				</div>
         <div data-component="post-list">
         </div>
       </div>
