@@ -35,26 +35,10 @@ class Post extends Component<State, null> {
     `;
 	}
 	setEvent(): void {
-		this.addEvent('input', '.title', (e) => {
-			const target = e.target as HTMLInputElement;
-			this.setState({ title: target.value });
-			this.autoFocus('.title', this.state.title.length);
-		});
-		this.addEvent('input', '.content', (e) => {
-			const target = e.target as HTMLInputElement;
-			this.setState({ content: target.value });
-			this.autoFocus('.content', this.state.content.length);
-		});
-		this.addEvent('click', '.create-image-btn', async () => {
-			const res = await getPhoto();
-			this.setState({ image: res.data.urls.regular });
-			console.log(res);
-		});
-		this.addEvent('click', '.post-btn', async () => {
-			const { title, content, image } = this.state;
-			const res = await postPost({ title, content, image });
-			if (res.data.code === 201) navigate('/');
-		});
+		this.addEvent('input', '.title', this.onTitleChange.bind(this));
+		this.addEvent('input', '.content', this.onContentChange.bind(this));
+		this.addEvent('click', '.create-image-btn', this.createImageHandler.bind(this));
+		this.addEvent('click', '.post-btn', this.postHandler.bind(this));
 	}
 
 	update(): void {
@@ -62,6 +46,28 @@ class Post extends Component<State, null> {
 		this.checkPost();
 		const header = this.parentEl.querySelector('[data-component="header"') as Element;
 		new Header({ parentEl: header, props: { hasBackBtn: true, title: 'HPNY 2023' } });
+	}
+
+	onTitleChange(e: Event) {
+		const target = e.target as HTMLInputElement;
+		this.setState({ title: target.value });
+		this.autoFocus('.title', this.state.title.length);
+	}
+	onContentChange(e: Event) {
+		const target = e.target as HTMLInputElement;
+		this.setState({ content: target.value });
+		this.autoFocus('.content', this.state.content.length);
+	}
+
+	async createImageHandler() {
+		const res = await getPhoto();
+		this.setState({ image: res.data.urls.regular });
+	}
+
+	async postHandler() {
+		const { title, content, image } = this.state;
+		const res = await postPost({ title, content, image });
+		if (res.data.code === 201) navigate('/');
 	}
 
 	checkImage() {

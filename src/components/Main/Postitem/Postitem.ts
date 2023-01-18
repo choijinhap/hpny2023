@@ -21,9 +21,7 @@ class Postitem extends Component<null, Props> {
   </div>`;
 	}
 	setEvent() {
-		this.addEvent('click', '.post-item', (e) => {
-			navigate(`/post/${this.props.post.postId}`);
-		});
+		this.addEvent('click', '.post-item', () => navigate(`/post/${this.props.post.postId}`));
 	}
 }
 

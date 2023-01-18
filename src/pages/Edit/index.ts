@@ -36,12 +36,7 @@ class Edit extends Component<State, null> {
     `;
 	}
 	onMounted(): void {
-		const postId = location.pathname.split('/').pop() as string;
-		const fetchData = async () => {
-			const res = await getPostDetail(postId);
-			this.setState(res.data.data.post);
-		};
-		fetchData();
+		this.fetchPostDetail();
 	}
 
 	setEvent(): void {
@@ -55,6 +50,11 @@ class Edit extends Component<State, null> {
 		new Header({ parentEl: header, props: { hasBackBtn: true, title: 'HPNY 2023' } });
 	}
 
+	async fetchPostDetail() {
+		const postId = location.pathname.split('/').pop() as string;
+		const res = await getPostDetail(postId);
+		this.setState(res.data.data.post);
+	}
 	onTitleChange(e: Event) {
 		const target = e.target as HTMLInputElement;
 		this.setState({ title: target.value });

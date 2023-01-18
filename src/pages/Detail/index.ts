@@ -39,12 +39,7 @@ class Detail extends Component<State, null> {
     `;
 	}
 	onMounted(): void {
-		const postId = location.pathname.split('/').pop() as string;
-		const fetchData = async () => {
-			const res = await getPostDetail(postId);
-			this.setState({ post: res.data.data.post, comments: res.data.data.comments });
-		};
-		fetchData();
+		this.fetchPostDetail();
 	}
 	update(): void {
 		const postDetailWrapper = this.parentEl.querySelector(
@@ -61,6 +56,12 @@ class Detail extends Component<State, null> {
 			'[data-component="comment-form"'
 		) as Element;
 		new CommentForm({ parentEl: commentFormComponent, props: { postId: this.state.post.postId } });
+	}
+
+	async fetchPostDetail() {
+		const postId = location.pathname.split('/').pop() as string;
+		const res = await getPostDetail(postId);
+		this.setState({ post: res.data.data.post, comments: res.data.data.comments });
 	}
 }
 export default Detail;

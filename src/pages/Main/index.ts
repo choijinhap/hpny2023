@@ -22,9 +22,7 @@ class Main extends Component<null, null> {
     `;
 	}
 	setEvent(): void {
-		this.addEvent('click', '.create-post-btn', () => {
-			navigate('/post');
-		});
+		this.addEvent('click', '.create-post-btn', () => navigate('/post'));
 	}
 	update(): void {
 		const postListWrapper = this.parentEl.querySelector('[data-component="post-list"') as Element;

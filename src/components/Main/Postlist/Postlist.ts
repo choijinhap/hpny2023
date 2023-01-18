@@ -29,11 +29,7 @@ class Postlist extends Component<State, null> {
 	}
 
 	onMounted() {
-		const fetchData = async () => {
-			const res = await getAllPosts();
-			this.setState({ posts: res.data.data.posts });
-		};
-		fetchData();
+		this.fetchAllPosts();
 	}
 	update() {
 		const postItemWrappers = this.parentEl.querySelectorAll('[data-component="post-item"');
@@ -44,6 +40,11 @@ class Postlist extends Component<State, null> {
 				props: { post: this.state.posts[Number(postItemWrapperEl.dataset.id)] },
 			});
 		});
+	}
+
+	async fetchAllPosts() {
+		const res = await getAllPosts();
+		this.setState({ posts: res.data.data.posts });
 	}
 }
 
