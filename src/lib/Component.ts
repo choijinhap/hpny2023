@@ -32,18 +32,22 @@ class Component<T, K> {
 		const isTarget = (target: Element) => children.includes(target) || target.closest(selector);
 		component.addEventListener(eventType, (event) => {
 			if (!isTarget(event.target as Element)) return false;
-			callback(event);
 			if (eventType === 'input') {
-				this.autoFocus(selector);
+				this.autoFocus(selector, callback, event);
+				return;
 			}
+			callback(event);
 		});
 	}
 	onMounted() {}
 	update() {}
-	autoFocus(selector: string) {
-		const el = this.parentEl.querySelector(selector) as HTMLInputElement;
-		el.focus();
-		el.setSelectionRange(el.value.length, el.value.length);
+	autoFocus(selector: string, callback: (event: Event) => void, event: Event) {
+		const prevEl = this.parentEl.querySelector(selector) as HTMLInputElement;
+		const cursor = prevEl.selectionStart;
+		callback(event);
+		const nextEl = this.parentEl.querySelector(selector) as HTMLInputElement;
+		nextEl.focus();
+		nextEl.setSelectionRange(cursor, cursor);
 	}
 }
 export default Component;
