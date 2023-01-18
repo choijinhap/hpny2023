@@ -31,7 +31,6 @@ class CommentForm extends Component<State, Props> {
 	onContentChange(e: Event) {
 		const target = e.target as HTMLInputElement;
 		this.setState({ content: target.value });
-		this.autoFocus('.content', this.state.content.length);
 	}
 
 	async onSubmitHandler(e: Event) {

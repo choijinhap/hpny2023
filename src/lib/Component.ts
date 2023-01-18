@@ -33,14 +33,17 @@ class Component<T, K> {
 		component.addEventListener(eventType, (event) => {
 			if (!isTarget(event.target as Element)) return false;
 			callback(event);
+			if (eventType === 'input') {
+				this.autoFocus(selector);
+			}
 		});
 	}
 	onMounted() {}
 	update() {}
-	autoFocus(selector: string, length: number) {
+	autoFocus(selector: string) {
 		const el = this.parentEl.querySelector(selector) as HTMLInputElement;
 		el.focus();
-		el.setSelectionRange(length, length);
+		el.setSelectionRange(el.value.length, el.value.length);
 	}
 }
 export default Component;

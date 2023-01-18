@@ -58,12 +58,10 @@ class Edit extends Component<State, null> {
 	onTitleChange(e: Event) {
 		const target = e.target as HTMLInputElement;
 		this.setState({ title: target.value });
-		this.autoFocus('.title', this.state.title.length);
 	}
 	onContentChange(e: Event) {
 		const target = e.target as HTMLInputElement;
 		this.setState({ content: target.value });
-		this.autoFocus('.content', this.state.content.length);
 	}
 	async onEditPost() {
 		const { title, content } = this.state;
