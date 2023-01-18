@@ -13,7 +13,7 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: 'app.bundle.js',
+		filename: '[name].[contenthash].js',
 		publicPath: '/',
 		// clear output directory before exporting bundle files
 		// don't need 'clean-webpack-plugin' anymore
