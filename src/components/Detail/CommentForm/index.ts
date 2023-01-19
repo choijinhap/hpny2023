@@ -33,16 +33,15 @@ class CommentForm extends Component<State, Props> {
 		this.setState({ content: target.value });
 	}
 
-	async onSubmitHandler(e: Event) {
+	onSubmitHandler(e: Event) {
 		e.preventDefault();
 		if (!this.state.content) {
 			alert('댓글을 입력하세요');
 			return;
 		}
-		const res = await postComment(this.props.postId, this.state.content);
-		if (res.data.code === 201) {
-			navigate(`/post/${this.props.postId}`);
-		}
+		postComment(this.props.postId, this.state.content)
+			.then(() => navigate(`/post/${this.props.postId}`))
+			.catch((err) => alert(err.response.data.message));
 	}
 }
 export default CommentForm;

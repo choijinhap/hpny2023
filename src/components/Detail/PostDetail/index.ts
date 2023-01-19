@@ -36,13 +36,12 @@ class PostDetail extends Component<null, Props> {
 		navigate(`/edit/${this.props.post.postId}`);
 	}
 
-	async deletePostHandler() {
-		const res = await deletePost(this.props.post.postId);
-		if (res.data.code === 200) {
-			navigate('/');
-			return;
-		}
-		alert('삭제중 에러가 발생했습니다.');
+	deletePostHandler() {
+		deletePost(this.props.post.postId)
+			.then(() => navigate('/'))
+			.catch((err) => {
+				alert(err.response.data.message);
+			});
 	}
 }
 export default PostDetail;

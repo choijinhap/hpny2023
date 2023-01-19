@@ -1,3 +1,4 @@
+import { navigate } from 'src/lib/Router';
 import { Comment, Post } from 'src/@types/post';
 import { getPostDetail } from 'src/API/post';
 import Header from 'src/components/Common/Header';
@@ -58,10 +59,16 @@ class Detail extends Component<State, null> {
 		new CommentForm({ parentEl: commentFormComponent, props: { postId: this.state.post.postId } });
 	}
 
-	async fetchPostDetail() {
+	fetchPostDetail() {
 		const postId = location.pathname.split('/').pop() as string;
-		const res = await getPostDetail(postId);
-		this.setState({ post: res.data.data.post, comments: res.data.data.comments });
+		getPostDetail(postId)
+			.then((res) => {
+				this.setState({ post: res.data.data.post, comments: res.data.data.comments });
+			})
+			.catch(() => {
+				alert('잘못된 요첩입니다.');
+				navigate('/');
+			});
 	}
 }
 export default Detail;

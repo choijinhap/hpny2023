@@ -64,8 +64,9 @@ class Post extends Component<State, null> {
 
 	async postHandler() {
 		const { title, content, image } = this.state;
-		const res = await postPost({ title, content, image });
-		if (res.data.code === 201) navigate('/');
+		await postPost({ title, content, image })
+			.then(() => navigate('/'))
+			.catch((err) => alert(err.response.data.message));
 	}
 
 	checkImage() {

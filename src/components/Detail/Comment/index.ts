@@ -20,9 +20,10 @@ class Comment extends Component<null, Props> {
 		this.addEvent('click', '.post-comment-delete-btn', this.onDeleteComment.bind(this));
 	}
 
-	async onDeleteComment() {
-		const res = await deleteComment(this.props.comment.commentId);
-		if (res.data.code === 200) this.unMount();
+	onDeleteComment() {
+		deleteComment(this.props.comment.commentId)
+			.then(() => this.unMount())
+			.catch((err) => alert(err.response.data.message));
 	}
 }
 export default Comment;

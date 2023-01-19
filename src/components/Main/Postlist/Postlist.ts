@@ -1,6 +1,5 @@
 import Component from 'src/lib/Component';
 import { getAllPosts } from 'src/API/post';
-import { navigate } from 'src/lib/Router';
 import Postitem from '../Postitem/Postitem';
 import { Post } from 'src/@types/post';
 import './postlist.scss';
@@ -42,9 +41,8 @@ class Postlist extends Component<State, null> {
 		});
 	}
 
-	async fetchAllPosts() {
-		const res = await getAllPosts();
-		this.setState({ posts: res.data.data.posts });
+	fetchAllPosts() {
+		getAllPosts().then((res) => this.setState({ posts: res.data.data.posts }));
 	}
 }
 
