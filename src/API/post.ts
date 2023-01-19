@@ -1,12 +1,12 @@
-import server from '.';
+import request from '.';
 import { Post } from 'src/@types/post';
-export const getAllPosts = () => server.get('/posts');
+export const getAllPosts = () => request('GET', '/posts');
 export const postPost = ({ title, content, image }: Partial<Post>) =>
-	server.post('/post', { title, content, image });
-export const getPostDetail = (postId: string) => server.get(`/post/${postId}`);
-export const deletePost = (postId: string) => server.delete(`/post/${postId}`);
+	request('POST', '/post', { title, content, image });
+export const getPostDetail = (postId: string) => request('GET', `/post/${postId}`);
+export const deletePost = (postId: string) => request('DELETE', `/post/${postId}`);
 export const patchPost = (postId: string, { title, content }: Partial<Post>) =>
-	server.patch(`/post/${postId}`, { title, content });
-export const deleteComment = (commentId: string) => server.delete(`/comment/${commentId}`);
+	request('PATCH', `/post/${postId}`, { title, content });
+export const deleteComment = (commentId: string) => request('DELETE', `/comment/${commentId}`);
 export const postComment = (postId: string, content: string) =>
-	server.post(`/comment/${postId}`, { content });
+	request('POST', `/comment/${postId}`, { content });
